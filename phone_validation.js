@@ -1,9 +1,10 @@
+$(document).ready(function(){
+   $('.phone').inputmask("+38 (099) 999-99-99");  //static mask
+ });
+
 function validateForm(){
     // Отримуємо значення телефону
     let phoneValue = document.querySelector('.phone').value;
-    // Маска для вводу номера телефону
-    $('.phone').inputmask("+38 (999) 999-99-99");
-
     let digitsOnly = phoneValue.replace(/\D/g, ''); // Видаляємо всі нецифрові символи
 
     // Перевірка на кількість цифр
