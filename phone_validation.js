@@ -10,6 +10,14 @@ $(document).ready(function(){
         let phoneValue = $('.phone').val(); // Отримуємо значення з поля
         let operatorCode = phoneValue.match(/\+38 \((\d{3})\)/); // Витягуємо код оператора з номера
 
+        // Перевірка, чи введено всі цифри
+        let digitsOnly = phoneValue.replace(/\D/g, ''); // Видаляємо всі нецифрові символи
+        if (digitsOnly.length !== 12) { // 12 цифр для формату +38 (XXX) XXX-XX-XX
+            event.preventDefault(); // Зупиняємо відправку форми
+            alert('Будь ласка, введіть номер повністю!');
+            return;
+        }
+
         if (operatorCode && operatorCode[1]) {
             if (!validOperators.includes(operatorCode[1])) {
                 event.preventDefault(); // Зупиняємо відправку форми
