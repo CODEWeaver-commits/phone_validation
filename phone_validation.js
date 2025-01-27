@@ -26,4 +26,4 @@ function validateForm(){
     // Якщо перевірки пройшли успішно, викликаємо sendorder
     sendorder(1); // Відправка форми через sendorder
     return false; // Повертаємо false, щоб форма не відправлялася стандартним способом
-});
+};
