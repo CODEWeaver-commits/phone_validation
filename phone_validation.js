@@ -1,6 +1,9 @@
 function validateForm(){
     // Отримуємо значення телефону
-    let phoneValue = document.querySelector('.phone').value;
+    let form = event.target; // Форма, яку користувач відправляє
+    let phoneInput = form.querySelector('.phone'); // Беремо телефон саме з цієї форми
+
+    let phoneValue = phoneInput.value;
     let digitsOnly = phoneValue.replace(/\D/g, ''); // Видаляємо всі нецифрові символи
 
     // Перевірка на кількість цифр
@@ -23,7 +26,10 @@ function validateForm(){
         return false; // Зупиняємо відправку форми
     }
 
+    let num = form.querySelector('input[name^="tel"]').name.replace('tel', '') || 1;
+    let name = form.querySelector('input[name^="name"]').name.replace('name', '') || '';
+    
     // Якщо перевірки пройшли успішно, викликаємо sendorder
-    sendorder(1); // Відправка форми через sendorder
+    sendorder(num); // Відправка форми через sendorder
     return false; // Повертаємо false, щоб форма не відправлялася стандартним способом
 };
